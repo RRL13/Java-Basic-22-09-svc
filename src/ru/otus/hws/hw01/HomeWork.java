@@ -1,3 +1,6 @@
+package ru.otus.hws.hw01;
+
+
 import java.util.Base64;
 import java.util.Scanner;
 // Зарегистрироваться на github.com
