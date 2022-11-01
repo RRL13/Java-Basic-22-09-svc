@@ -8,22 +8,22 @@ public class HomeWorkIfElseAdd {
         int numCorrectAnswers = 0;
         int numWrongAnswers = 0;
 
-        String[][][] questionsAnswers = new String[][][]{
+        Object[][][] questionsAnswers = new Object[][][]{
                 {{"Не лает, не кусает, а в дом не пускает"},
                         {"Кошка", "Замок", "Дверь", "Собака"},
-                            {"2"}
+                            {2}
                 },
                 {{"2 + 2 * 2 = "},
                         {"8", "4", "10", "6"},
-                            {"4"}
+                            {4}
                 },
                 {{"Два брюшка, четыре ушка"},
                         {"свинья", "толстяк на коне", "подушка", "ножницы"},
-                            {"3"}
+                            {3}
                 },
                 {{"Ёжики дома сидели, песню дружно они запели. Первый ёжик: \" Фыр-фыр-фыр \". Второй ёжик: \"Хыр-Хыр-Хыр\". Третий ёжик \"Цир-цир-цир\". Как запел четвёртый ёжик?"},
                         {"Арр - арр - арр", "Урр - урр - урр", "Ирр - ирр - ирр", "Чирр - Чирр - Чирр"},
-                            {"4"}
+                            {4}
                 }
         };
 
@@ -32,11 +32,11 @@ public class HomeWorkIfElseAdd {
         for (int i = 0; i < questionsAnswers.length; i++){
             System.out.println(questionsAnswers[i][0][0]);
             int numberAnswer = 0;
-            for (String answerPrint : questionsAnswers[i][1]) {
+            for (Object answerPrint : questionsAnswers[i][1]) {
                 System.out.println(++numberAnswer + ": " + answerPrint + ";");
             }
             //scanAnswerOk();
-            if (scanAnswerOk() == Integer.parseInt(questionsAnswers[i][2][0])) {
+            if (scanAnswerOk() == (int) questionsAnswers[i][2][0]) {
                 numCorrectAnswers++;
             } else {
                 numWrongAnswers++;
