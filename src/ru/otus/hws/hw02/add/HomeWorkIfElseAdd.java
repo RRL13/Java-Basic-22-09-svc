@@ -7,6 +7,15 @@ public class HomeWorkIfElseAdd {
     public static void main(String[] args) {
         int numCorrectAnswers = 0;
         int numWrongAnswers = 0;
+        String[] array = new String[]{"test"};
+        Scanner inputText = new Scanner(System.in);
+        System.out.println("Введите текст нового элемента массива array[]");
+        String newText = inputText.nextLine();
+        array = addElementInStringArray(array, newText);
+        for (String arrayText : array){
+            System.out.println(arrayText);
+        }
+
 
         Object[][][] questionsAnswers = new Object[][][]{
                 {{"Не лает, не кусает, а в дом не пускает"},
@@ -60,5 +69,12 @@ public class HomeWorkIfElseAdd {
         }
 
         return answer;
+    }
+
+    private static String[] addElementInStringArray(String[] inputStringArr, String newElementText){
+        String[] returnStringArr = new String[(inputStringArr.length+1)];
+        System.arraycopy(inputStringArr, 0, returnStringArr, 0, inputStringArr.length);
+        returnStringArr[returnStringArr.length-1] = newElementText;
+        return returnStringArr;
     }
 }
