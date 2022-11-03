@@ -15,7 +15,7 @@ public class HomeWorkIfElseAdd {
         for (String arrayText : array){
             System.out.println(arrayText);
         }
-
+        
 
         Object[][][] questionsAnswers = new Object[][][]{
                 {{"Не лает, не кусает, а в дом не пускает"},
@@ -44,7 +44,7 @@ public class HomeWorkIfElseAdd {
             for (Object answerPrint : questionsAnswers[i][1]) {
                 System.out.println(++numberAnswer + ": " + answerPrint + ";");
             }
-            //scanAnswerOk();
+
             if (scanAnswerOk() == (int) questionsAnswers[i][2][0]) {
                 numCorrectAnswers++;
             } else {
