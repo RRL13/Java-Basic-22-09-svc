@@ -6,7 +6,6 @@ public class HomeWorkOop {
         int numRightAnswers = 0;
         int numWrongAnswers = 0;
 
-
         Question[] questions = createQuestionsArray(numQuestions);
 
         questions[0].setQuestion ("Не лает, не кусает, а в дом не пускает");
@@ -29,6 +28,8 @@ public class HomeWorkOop {
 
         questions[4] = new Question("Зимой и летом одним цветом.",1);
         questions[4].setAnswersArray("ёлка", "корова", "лето");
+
+
 
 
 
