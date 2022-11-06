@@ -10,12 +10,16 @@ class Question {
     public Question() {
     }
 
+    public Question(String question) {
+        this.question = question;
+    }
+
     public Question(String question, int rightAnswer) {
         this.question = question;
         this.rightAnswer = rightAnswer;
     }
 
-    public Question(String question, String[] answersArray, int rightAnswer) {
+    public Question(String question, int rightAnswer, String... answersArray) {
         this.question = question;
         this.answersArray = answersArray;
         this.rightAnswer = rightAnswer;
@@ -29,7 +33,7 @@ class Question {
         return question;
     }
 
-    public void setAnswersArray(String[] newAnswersArray ){
+    public void setAnswersArray(String... newAnswersArray ){
         this.answersArray = newAnswersArray;
     }
 
@@ -73,12 +77,11 @@ class Question {
     }
     private int scanAnswerOk() {
         Scanner scanAnswer = new Scanner(System.in);
-        boolean isAnswerOk = false;
         int inputUserAnswer = 0;
         System.out.print("Введите ваш вариант ответа: ");
         if (scanAnswer.hasNextInt()) {
-            int inputAnswer = scanAnswer.nextInt();
-            isAnswerOk = (inputAnswer > 0 && inputAnswer <= answersArray.length);
+            inputUserAnswer = scanAnswer.nextInt();
+            boolean isAnswerOk = (inputUserAnswer > 0 && inputUserAnswer <= answersArray.length);
             if (!isAnswerOk) {
                 inputUserAnswer = -1;
                 System.out.println("Вы не попали в диапазон ответов (от 1 до " + answersArray.length + " ). Засчитаем, как неверный ответ.");
