@@ -1,5 +1,6 @@
 package ru.otus.hws.hw02.add;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -37,6 +38,9 @@ public class HomeWorkIfElseAdd {
         };
 
         Scanner answer = new Scanner(System.in);
+
+        ArrayList arrayList = new ArrayList();
+
 
         for (int i = 0; i < questionsAnswers.length; i++){
             System.out.println(questionsAnswers[i][0][0]);

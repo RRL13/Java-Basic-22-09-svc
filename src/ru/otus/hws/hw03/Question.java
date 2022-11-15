@@ -11,7 +11,7 @@ class Question {
     }
 
     public Question(String question) {
-        this.question = question;
+        this(question, 0, new String[0]);
     }
 
     public Question(String question, int rightAnswer) {
