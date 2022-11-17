@@ -1,20 +1,22 @@
 package ru.otus.hws.hw04;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class HwSortArray {
     //ArrayList<Integer> arrayForSort = new ArrayList<Integer>();
     public static void main(String[] args) {
-        Integer[] arrayForSort = new Integer[100000];
+        final int arraySize = 100000;
+        int[] arrayForSort = new int[arraySize];
+        ArrayList<Integer> arrayListForSort = new ArrayList<>();
 
-        addRndInArray(arrayForSort);
+        addRndInArray(arrayForSort, arrayListForSort);
+
         long deltaTimeBubble = SortArrayBubbleTime(arrayForSort);
+        long deltaArrayListSortBubble = SortArrayListBubbleTime(arrayListForSort);
 
-        addRndInArray(arrayForSort);
-        long deltaArrayListSortBubble = SortArrayListBubbleTime(arrayForSort);
-
-        addRndInArray(arrayForSort);
-        long deltaCollectionsSort = SortArrayCollectionsTime(arrayForSort);
+        Collections.shuffle(arrayListForSort);
+        long deltaCollectionsSort = SortArrayCollectionsTime(arrayListForSort);
 
 
 
@@ -24,7 +26,7 @@ public class HwSortArray {
     }
 
 
-    public static void addRndInArray(Integer[] inputArray) {
+    public static void addRndInArray(int[] inputArray) {
         int arraySize = inputArray.length;
         Random random = new Random();
         for (int i = 0; i < arraySize; i++) {
@@ -32,7 +34,26 @@ public class HwSortArray {
         }
     }
 
-    public static long SortArrayBubbleTime(Integer[] inputArray) {
+    public static void addRndInArray(ArrayList inputArray, int arraySize) {
+        //int arraySize = inputArray.length;
+        Random random = new Random();
+        for (int i = 0; i < arraySize; i++) {
+            inputArray.add(random.nextInt());
+
+        }
+    }
+
+    public static void addRndInArray(int[] inputArray, ArrayList inputArrayList) {
+        int arraySize = inputArray.length;
+        Random random = new Random();
+        for (int i = 0; i < arraySize; i++) {
+            inputArrayList.add(random.nextInt());
+            inputArray[i] = random.nextInt();
+
+        }
+    }
+
+    public static long SortArrayBubbleTime(int[] inputArray) {
         int arraySize = inputArray.length;
         int temp = 0;
         long startSortBubble = new Date().getTime();
@@ -49,11 +70,11 @@ public class HwSortArray {
         return endSortBubble - startSortBubble;
     }
 
-    public static long SortArrayListBubbleTime(Integer[] inputArray) {
-        List arrayListForSort = new ArrayList<>();
+    public static long SortArrayListBubbleTime(ArrayList<Integer> arrayListForSort) {
+        //List arrayListForSort = new ArrayList<>();
         //Collections.addAll(arrayListForSort, inputArray);
-        arrayListForSort = Arrays.asList(inputArray);
-        int arraySize = inputArray.length;
+        //arrayListForSort = Arrays.asList(inputArray);
+        int arraySize = arrayListForSort.size();
         int temp = 0;
         long startArrayListSortBubble = new Date().getTime();
         for (int k = arraySize - 1; k > 0; k--) {
@@ -74,9 +95,9 @@ public class HwSortArray {
 
     }
 
-    public static long SortArrayCollectionsTime(Integer[] inputArray){
-        List arrayListForSort = new ArrayList<>();
-        arrayListForSort = Arrays.asList(inputArray);
+    public static long SortArrayCollectionsTime(ArrayList<Integer> arrayListForSort){
+        //List arrayListForSort = new ArrayList<>();
+        //arrayListForSort = Arrays.asList(inputArray);
 
         long startSortCollections = new Date().getTime();
         Collections.sort(arrayListForSort);
