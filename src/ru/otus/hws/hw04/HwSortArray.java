@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 public class HwSortArray {
-    //ArrayList<Integer> arrayForSort = new ArrayList<Integer>();
+
     public static void main(String[] args) {
         final int arraySize = 100000;
         int[] arrayForSort = new int[arraySize];
@@ -35,7 +35,6 @@ public class HwSortArray {
     }
 
     public static void addRndInArray(ArrayList inputArray, int arraySize) {
-        //int arraySize = inputArray.length;
         Random random = new Random();
         for (int i = 0; i < arraySize; i++) {
             inputArray.add(random.nextInt());
@@ -71,9 +70,7 @@ public class HwSortArray {
     }
 
     public static long SortArrayListBubbleTime(ArrayList<Integer> arrayListForSort) {
-        //List arrayListForSort = new ArrayList<>();
-        //Collections.addAll(arrayListForSort, inputArray);
-        //arrayListForSort = Arrays.asList(inputArray);
+
         int arraySize = arrayListForSort.size();
         int temp = 0;
         long startArrayListSortBubble = new Date().getTime();
@@ -96,8 +93,6 @@ public class HwSortArray {
     }
 
     public static long SortArrayCollectionsTime(ArrayList<Integer> arrayListForSort){
-        //List arrayListForSort = new ArrayList<>();
-        //arrayListForSort = Arrays.asList(inputArray);
 
         long startSortCollections = new Date().getTime();
         Collections.sort(arrayListForSort);
