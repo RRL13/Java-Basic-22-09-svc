@@ -15,7 +15,6 @@ class Client {
         this.age = age;
     };
 
-
 //    public UUID getId() {
 //        return id;
 //    }
