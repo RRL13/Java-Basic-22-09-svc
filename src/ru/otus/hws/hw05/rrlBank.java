@@ -6,7 +6,6 @@ public class rrlBank {
 
     static HashMap<Client, ArrayList<Account>> storage = new HashMap<>();
 
-
     public static void main(String[] args) {
         ArrayList<Client> clients = new ArrayList<>();
         //Storage storage = new Storage();
