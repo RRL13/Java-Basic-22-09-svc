@@ -43,7 +43,7 @@ class Account {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return accountNumber == account.accountNumber && accountVolume == account.accountVolume;
+        return accountNumber == account.accountNumber;
     }
 
     @Override
