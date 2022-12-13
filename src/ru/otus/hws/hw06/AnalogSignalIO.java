@@ -103,7 +103,8 @@ public class AnalogSignalIO {
 
         } catch (NullPointerException | AnalogException e) {
             System.out.println(e.getMessage());
-            return lowLevel;
+            //return lowLevel;
+            throw e;
         }
         finally {
             ;

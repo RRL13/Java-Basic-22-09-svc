@@ -33,6 +33,7 @@ public class GasPumpingUnit {
         catch (Exception e) {
 
             System.out.println("1 " + e.getCause());
+            e.printStackTrace();
 
         }
 
