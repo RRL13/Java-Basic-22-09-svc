@@ -1,6 +1,5 @@
 package ru.otus.hws.hw06;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class GasPumpingUnit {
@@ -23,7 +22,7 @@ public class GasPumpingUnit {
     public boolean setPumpingUnitMode() {
         Scanner scanner = new Scanner(System.in);
 
-        int currentEngineRates = engine.getEngineRates().getValue();
+        int currentEngineRates = engine.getEngineSpeed().getValue();
 
         System.out.println("Текущие обороты двигателя: " + currentEngineRates);
         System.out.print("Ведите задание на обороты: ");

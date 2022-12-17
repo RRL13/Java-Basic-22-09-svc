@@ -1,8 +1,13 @@
 package ru.otus.hws.hw06;
 
-public class BugHunter {
-    public static void main(String[] args) throws AnalogException {
+import java.io.IOException;
 
+public class BugHunter {
+    public static void main(String[] args) throws AnalogException, IOException {
+
+        EngineModel engineModel = new EngineModel();
+
+        /*
         AnalogSignalIO testOutput = new AnalogSignalIO(true);
         //System.out.println(testOutput.isInputSignal());
         //System.out.println(testOutput.isOutputSignal());
@@ -12,8 +17,9 @@ public class BugHunter {
 
         GasPumpingUnit gasPumpingUnit = new GasPumpingUnit();
 
-        System.out.println(gasPumpingUnit.getEngine().getEngineRates().getValue());
+        System.out.println(gasPumpingUnit.getEngine().getEngineSpeed().getValue());
         gasPumpingUnit.setPumpingUnitMode();
-        System.out.println(gasPumpingUnit.getEngine().getEngineRates().getValue());
+        System.out.println(gasPumpingUnit.getEngine().getEngineSpeed().getValue());
+        */
     }
 }
