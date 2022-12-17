@@ -2,12 +2,12 @@ package ru.otus.hws.hw06;
 
 public class Engine {
 
-    private AnalogSignalIO engineRates = new AnalogSignalIO(10, 0, 100 ,true);
+    private AnalogSignalIO engineSpeed = new AnalogSignalIO(10, 0, 100 ,true);
     private AnalogSignalIO fuelValvePos = new AnalogSignalIO(50, 0, 100, true);
     private AnalogSignalIO fuelValveSet = new AnalogSignalIO(20, 0 , 100 ,false);
 
-    public AnalogSignalIO getEngineRates() {
-        return engineRates;
+    public AnalogSignalIO getEngineSpeed() {
+        return engineSpeed;
     }
 
 
@@ -40,40 +40,42 @@ public class Engine {
         return engineStopped;
     }
 
-    public boolean setEngineRates(int requiredRates) {
-        int deltaRates = getEngineRates().getValue() - requiredRates;
-        while (deltaRates < 0) {
-            upEngineRates(deltaRates);
+
+
+    public boolean setEngineRates(int requiredSpeed) {
+        int deltaSpeed = getEngineSpeed().getValue() - requiredSpeed;
+        while (deltaSpeed < 0) {
+            upEngineSpeed(deltaSpeed);
             System.out.println("поднять обороты!");
-            deltaRates = getEngineRates().getValue() - requiredRates;
+            deltaSpeed = getEngineSpeed().getValue() - requiredSpeed;
         }
-        while (deltaRates > 0) {
-            downEngineRates(deltaRates);
+        while (deltaSpeed > 0) {
+            downEngineSpeed(deltaSpeed);
             System.out.println("снизить обороты!");
-            deltaRates = getEngineRates().getValue() - requiredRates;
+            deltaSpeed = getEngineSpeed().getValue() - requiredSpeed;
         }
 
         System.out.println("двигатель на заданном режиме");
         return true;
 
     }
-    public void upEngineRates(int deltaRates) {
-        for (int i = deltaRates; i < 0; i++) {
+    public void upEngineSpeed(int deltaSpeed) {
+        for (int i = deltaSpeed; i < 0; i++) {
             this.fuelValvePos.setValue(this.fuelValvePos.getValue() + 1);
 
         }
 
-        int imitationNewRates = this.getEngineRates().getValue() + deltaRates;
-        this.engineRates.imitationSetValue(imitationNewRates);
+        int imitationNewSpeed = this.getEngineSpeed().getValue() + deltaSpeed;
+        this.engineSpeed.imitationSetValue(imitationNewSpeed);
     }
-    public void downEngineRates(int deltaRates) {
-        for (int i = deltaRates; i > 0; i--) {
+    public void downEngineSpeed(int deltaSpeed) {
+        for (int i = deltaSpeed; i > 0; i--) {
             this.fuelValvePos.setValue(this.fuelValvePos.getValue() - 1);
 
         }
 
-        int imitationNewRates = this.getEngineRates().getValue() + deltaRates;
-        this.engineRates.imitationSetValue(imitationNewRates);
+        int imitationNewSpeed = this.getEngineSpeed().getValue() + deltaSpeed;
+        this.engineSpeed.imitationSetValue(imitationNewSpeed);
 
     }
 
