@@ -32,6 +32,7 @@ public class Assertions {
         }
     }
 
+
     public static void assertEquals(long expected, long actual) {
         if (expected != actual) {
             throw new AssertionError(String.format("Expected %d = %d", expected, actual));
