@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ввод данных о студентах</title>
+
+  <style>
+    body {
+      background: #2b2b2b ;
+      color: darkgrey;
+      font-family: JetBrains mono ,sans-serif;
+      font-size: smaller;
+    }
+    h2 {
+
+    }
+    h3 {
+      /*color: steelblue;*/
+    }
+    h4 {
+      margin: 0;
+      line-height: 30px;
+    }
+
+    .students-tab {
+      border: 2px solid darkcyan;
+      width: 650px;
+      border-collapse: collapse;
+      margin-bottom: 300px;
+
+    }
+
+    .input-new-student-tab {
+
+      border: 2px solid darkcyan;
+      width: 500px;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+
+    .students-tab-thead, .input-new-student-tab-thread{
+      background: #3c3f41;
+      /*color: #2b2b2b;*/
+      color:  #e8bf6a;
+      font-weight: bold;
+      font-size: larger;
+      text-align: center;
+      margin: 10px;
+      line-height: 30px;
+
+
+    }
+
+    .students-tab tr td {
+      border: 1px solid  darkcyan;
+    }
+
+    .students-tab-col1 {
+      width: 300px;
+      height: 20px;
+    }
+
+    .students-tab-col2 {
+      width: 120px;
+      height: 20px;
+    }
+
+    .students-tab-col3 {
+      width: 150px;
+      height: 20px;
+    }
+
+    .students-tab-col4 {
+      width: 80px;
+    }
+
+    .input-new-student tr, td {
+      width: 250px;
+      height: 30px;
+    }
+    .input-new-student-str11,
+    .input-new-student-str21,
+    .input-new-student-str31{
+      width: 250px;
+      height: 25px;
+      font-size: larger;
+      margin: 3px;
+      line-height: 20px;
+    }
+
+    /*.input-new-student-str12,*/
+    /*.input-new-student-str22,*/
+    /*.input-new-student-str32{*/
+    /*  width: 250px;*/
+    /*  height: 30px;*/
+    /*  font-size: larger;*/
+    /*}*/
+
+    .input-new-student-tab input, select {
+      width: 250px;
+      height: 25px;
+      font-size: large;
+      color: #3c3f41;
+      background: darkgray;
+      margin: 3px;
+      line-height: 20px;
+      alignment: right;
+    }
+
+    .input-button {
+      width: 500px;
+      height: 50px;
+      background: #e8bf6a;
+      color: chocolate;
+      font-size: large;
+    }
+
+  </style>
+
+  <script>
+    "use strict"
+    function addStudent() {
+      const studentsTab = document.getElementById('studentsTab');
+
+      const studentName = document.getElementById('studentName').value;
+      const studentBirthDate = document.getElementById('studentBirthDate').value;
+      const studentsGender = document.getElementById('selectStudentGender').value;
+
+      const studentAge = age(studentBirthDate);
+
+      let listOfTr = studentsTab.children;
+      let addTr = document.createElement("tr");
+
+      addTr.innerHTML = '<td>' + studentName + '</td>' +
+              '<td>' + studentsGender + '</td>' +
+              '<td>' + formatDate(new Date(studentBirthDate)) + ' </td>' +
+              '<td>' + studentAge + '</td>';
+
+      studentsTab.insertBefore(addTr, listOfTr[(listOfTr.length - 1)]);
+
+      document.getElementById('middleAge').innerHTML = middleAge();
+
+      function middleAge() {
+
+        let sumVal = 0;
+        let rowCount = studentsTab.rows.length - 3;
+
+        for(let i = 1; i < studentsTab.rows.length-2; i++)
+        {
+          sumVal = sumVal + parseInt(studentsTab.rows[i].cells[3].textContent);
+        }
+
+        return Math.round(sumVal / rowCount);
+      }
+    }
+
+    function age(birthDate) {
+      return Math.floor((new Date() - new Date(birthDate)) / 1000 / 60 / 60 / 24 / 365);
+    }
+    function formatDate(date) {
+
+      let dd = date.getDay();
+      if (dd < 10) dd = '0' + dd;
+
+      let mm = date.getMonth() + 1;
+      if (mm < 10) mm = '0' + mm;
+
+      let yyyy = date.getFullYear();
+
+      return dd + '.' + mm + '.' + yyyy;
+    }
+
+  </script>
+</head>
+<body>
+<h2>Таблица ввода нового студента</h2>
+<table class="input-new-student-tab" id="inputNewStudentTab">
+  <thead class="input-new-student-tab-thread">
+  <tr>
+      <td colspan="2"> Сюда вводите нового студента</td>>
+    </tr>
+
+  </thead>
+
+  <tbody>
+    <tr>
+        <td class="input-new-student-str11"> Фамилия Имя Отчество: </td>
+        <td class="input-new-student-str12"> <label> <input id = "studentName" type = "text" value = "Ноунэйм"> </label> </td>
+
+    </tr>
+    <tr>
+
+        <td class="input-new-student-str21"> Дата рождения: </td>
+        <td class="input-new-student-str22"> <label>  <input id = "studentBirthDate" type = "Date" value=""> </label> </td>
+
+
+    </tr>
+    <tr>
+
+      <td class="input-new-student-str31"> Пол: </td>
+      <td class="input-new-student-str32">
+
+        <label>
+          <select class="select-gender-new-student" id ="selectStudentGender">
+            <option value="мужчина">Мужской</option>
+            <option value="женщина">Женский</option>
+          </select>
+        </label>
+      </td>
+
+    </tr>
+  </tbody>
+  <tfoot>
+      <tr>
+        <td colspan="2"><button class = "input-button" onclick = "addStudent()">Добавить</button></td>
+
+      </tr>
+  </tfoot>
+
+</table>
+
+<h2>Таблица студентов</h2>
+<table class="students-tab" id="studentsTab">
+  <thead class="students-tab-thead">
+    <tr>
+      <td class="students-tab-col1">Имя студента</td>
+      <td class="students-tab-col2">Пол</td>
+      <td class="students-tab-col3">Дата рождения</td>
+      <td class="students-tab-col4">Возраст</td>
+    </tr>
+  </thead>
+
+  <tbody>
+
+  </tbody>
+  <tfoot>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr> <tr>
+    <td colspan="3">Средний возраст студентов</td>
+    <td id = "middleAge"></td>
+  </tr>
+  </tfoot>
+
+</table>
+</body>
+</html>
