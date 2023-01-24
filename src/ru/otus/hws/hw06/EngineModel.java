@@ -24,6 +24,8 @@ public class EngineModel {
             double keyFuelValvePos = 0;
             double valueEngineSpeed;
             do {
+                line = br.readLine();
+                lineNumber ++;
                 if (lineNumber % 2 !=0) {
                     keyFuelValvePos = Double.parseDouble(br.readLine());
                 } else {
