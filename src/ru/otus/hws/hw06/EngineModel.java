@@ -18,12 +18,14 @@ public class EngineModel {
         try (
             FileReader f = new FileReader(path);
             BufferedReader br = new BufferedReader(f)) {
-            String line = null;// br.readLine();
+            String line = null;//br.readLine();
 
             int lineNumber = 0;
             double keyFuelValvePos = 0;
             double valueEngineSpeed;
             do {
+                line = br.readLine();
+                lineNumber ++;
                 if (lineNumber % 2 !=0) {
                     keyFuelValvePos = Double.parseDouble(br.readLine());
                 } else {
